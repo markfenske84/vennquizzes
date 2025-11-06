@@ -1,57 +1,350 @@
+/*
+ * VennQuizzes Admin Styles
+ * Modern, clean admin interface
+ */
+
+/* === QUESTION ITEMS === */
 .venn-question-item {
-    background: #fff;
-    border: 1px solid #ccd0d4;
-    padding: 15px;
-    margin-bottom: 15px;
+    background: #ffffff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+}
+
+.venn-question-item:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .venn-question-item h4 {
-    margin-top: 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    margin: 0 0 15px 0;
+    padding: 0 0 15px 0;
+    border-bottom: 2px solid #f0f0f1;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d2327;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.venn-question-item h4::before {
+    content: '📝';
+    font-size: 18px;
 }
 
 .venn-question-item hr {
-    margin: 20px -15px 0;
+    margin: 20px -20px 0;
     border: 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #f0f0f1;
 }
 
+/* === FORM TABLES === */
+.venn-question-item .form-table {
+    margin: 0;
+}
+
+.venn-question-item .form-table th {
+    width: 180px;
+    padding: 12px 10px 12px 0;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.venn-question-item .form-table td {
+    padding: 12px 0;
+}
+
+.venn-question-item .form-table input[type="text"],
+.venn-question-item .form-table select {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* === ANSWERS SECTION === */
 .answers-container,
 .range-container {
-    margin: 15px 0;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f6f7f7;
+    border-radius: 6px;
+}
+
+.answers-container h5 {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.answers-container .widefat {
+    background: #ffffff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+}
+
+.answers-container .widefat thead th {
+    background: #f6f7f7;
+    font-weight: 600;
+    color: #1d2327;
+    padding: 10px;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.answers-list .answer-row {
+    transition: background-color 0.2s ease;
+}
+
+.answers-list .answer-row:hover {
+    background-color: #f6f7f7;
 }
 
 .answers-list .answer-row td {
-    padding: 8px;
+    padding: 10px;
+    vertical-align: middle;
 }
 
+.answers-list .answer-row input[type="text"] {
+    width: 100%;
+}
+
+.answers-list .answer-row input[type="number"] {
+    width: 80px;
+}
+
+/* === BUTTONS === */
 #add-question {
-    margin-top: 10px;
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 14px;
+    height: auto;
 }
 
 .add-answer {
-    margin-top: 10px;
+    margin-top: 12px;
+    padding: 6px 14px;
+    font-size: 13px;
+    height: auto;
 }
 
-.duplicate-question {
-    margin-right: 10px;
-}
-
-.remove-question {
-    color: #b32d2e;
-}
-
-.remove-question:hover {
-    color: #dc3232;
-}
-
+.duplicate-question,
 .duplicate-answer {
-    margin-right: 5px;
+    margin-right: 10px;
+    color: #2271b1;
+    border-color: #2271b1;
+    background: #f6f7f7;
 }
 
-/* Admin quiz form styles */
-.venn-quiz-form {
-    max-width: 800px;
+.duplicate-question:hover,
+.duplicate-answer:hover {
+    color: #135e96;
+    border-color: #135e96;
+    background: #f0f0f1;
 }
 
+.remove-question,
+.remove-answer {
+    color: #b32d2e;
+    border-color: #b32d2e;
+    background: transparent;
+}
+
+.remove-question:hover,
+.remove-answer:hover {
+    color: #ffffff;
+    background: #dc3232;
+    border-color: #dc3232;
+}
+
+/* === BUTTON GROUPS === */
+.venn-question-item > p {
+    margin: 20px 0 0;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f1;
+    display: flex;
+    gap: 10px;
+}
+
+/* === ANSWER TYPE INDICATOR === */
+.answer-type-select {
+    font-weight: 600;
+    padding: 6px 10px;
+    border: 2px solid #dcdcde;
+    border-radius: 4px;
+}
+
+.answer-type-select:focus {
+    border-color: #2271b1;
+    outline: none;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* === RANGE CONTAINER === */
+.range-container .form-table {
+    background: transparent;
+}
+
+.range-container .form-table th {
+    width: 200px;
+}
+
+/* === SHORTCODE BOX === */
+#venn_quiz_shortcode .inside {
+    padding: 12px;
+}
+
+#venn_quiz_shortcode input[type="text"] {
+    width: 100%;
+    font-family: monospace;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+}
+
+#venn_quiz_shortcode input[type="text"]:focus {
+    background: #fff;
+    border-color: #2271b1;
+}
+
+#venn_quiz_shortcode p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: #50575e;
+}
+
+/* === META BOX HEADERS === */
+.postbox-header h2 {
+    font-size: 15px;
+}
+
+/* === QUESTION COUNTER === */
+.question-number {
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* === EMPTY STATE === */
+#venn-questions-container:empty::before {
+    content: 'No questions yet. Click "Add Question" to get started.';
+    display: block;
+    padding: 40px;
+    text-align: center;
+    color: #646970;
+    background: #f6f7f7;
+    border-radius: 6px;
+    font-style: italic;
+}
+
+/* === LOADING STATE === */
+.venn-question-item.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* === SUCCESS MESSAGE PREVIEW === */
+#venn_quiz_messages textarea {
+    min-height: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+#venn_quiz_messages .description {
+    font-style: italic;
+    color: #646970;
+}
+
+/* === CATEGORY LABELS === */
+#venn_quiz_categories .regular-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#venn_quiz_categories .description {
+    margin-top: 6px;
+    color: #646970;
+}
+
+/* === RESPONSIVE ADMIN === */
+@media (max-width: 782px) {
+    .venn-question-item {
+        padding: 15px;
+    }
+
+    .venn-question-item .form-table th {
+        width: auto;
+        display: block;
+        padding-bottom: 6px;
+    }
+
+    .venn-question-item .form-table td {
+        display: block;
+        padding-top: 0;
+    }
+
+    .answers-list .answer-row td {
+        display: table-cell;
+        padding: 8px 4px;
+    }
+
+    .answers-list .answer-row input[type="text"] {
+        min-width: 120px;
+    }
+
+    .venn-question-item > p {
+        flex-direction: column;
+    }
+
+    .venn-question-item > p .button {
+        width: 100%;
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.venn-question-item {
+    animation: slideIn 0.3s ease;
+}
+
+/* === HELP TEXT === */
+.venn-help-text {
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    padding: 12px 16px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.venn-help-text strong {
+    color: #1d2327;
+}
+
+/* === DRAG AND DROP HINT === */
+.venn-question-item h4 {
+    cursor: move;
+}
+
+.venn-question-item h4:hover::after {
+    content: '⋮⋮';
+    margin-left: auto;
+    color: #8c8f94;
+    font-size: 18px;
+    letter-spacing: -2px;
+}

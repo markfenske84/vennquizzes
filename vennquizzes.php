@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/markfenske84/vennquizzes
  * Description: Create interactive Venn diagram quizzes to visualize data and help users determine where their focus should be.
  * Version: 1.0.0
- * Author: Webfor
+ * Author: Webfor Agency
  * Author URI: https://webfor.com/
  * Text Domain: vennquizzes
  * 
