@@ -1,0 +1,57 @@
+.venn-question-item {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.venn-question-item h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.venn-question-item hr {
+    margin: 20px -15px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.answers-container,
+.range-container {
+    margin: 15px 0;
+}
+
+.answers-list .answer-row td {
+    padding: 8px;
+}
+
+#add-question {
+    margin-top: 10px;
+}
+
+.add-answer {
+    margin-top: 10px;
+}
+
+.duplicate-question {
+    margin-right: 10px;
+}
+
+.remove-question {
+    color: #b32d2e;
+}
+
+.remove-question:hover {
+    color: #dc3232;
+}
+
+.duplicate-answer {
+    margin-right: 5px;
+}
+
+/* Admin quiz form styles */
+.venn-quiz-form {
+    max-width: 800px;
+}
+
