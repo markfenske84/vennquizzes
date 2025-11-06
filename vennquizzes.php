@@ -3,7 +3,7 @@
  * Plugin Name: VennQuizzes
  * Plugin URI: https://github.com/markfenske84/vennquizzes
  * Description: Create interactive Venn diagram quizzes to visualize data and help users determine where their focus should be.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Webfor Agency
  * Author URI: https://webfor.com/
  * Text Domain: vennquizzes
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('VENNQUIZ_VERSION', '1.0.0');
+define('VENNQUIZ_VERSION', '1.1.0');
 define('VENNQUIZ_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('VENNQUIZ_PLUGIN_URL', plugins_url('', __FILE__));
 define('VENNQUIZ_STYLES_PATH', 'includes/css');

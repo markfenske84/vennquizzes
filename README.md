@@ -2,7 +2,7 @@
 
 An interactive WordPress plugin that creates Venn diagram quizzes to help users visualize data and determine where their focus should be.
 
-Version: 1.0.0
+Version: 1.1.0
 
 Author: Webfor
 
@@ -123,6 +123,18 @@ This plugin is free software and may be redistributed under the terms of the GPL
 For support, please open an issue on the [GitHub repository](https://github.com/markfenske84/vennquizzes/issues).
 
 ## Changelog
+
+### 1.1.0
+- Major UI overhaul with modern, style-agnostic design
+- Enhanced Gutenberg block editor with beautiful previews
+- Improved admin interface with better visual hierarchy
+- Block theme support (alignwide, alignfull)
+- Custom-styled form elements (radio, checkbox, range sliders)
+- Smooth animations and transitions
+- Better mobile responsiveness
+- Improved accessibility with proper focus states
+- Print-friendly styles for quiz results
+- Enhanced results overlay with backdrop blur
 
 ### 1.0.0
 - Initial release
