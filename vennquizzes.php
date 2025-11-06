@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('VENNQUIZ_VERSION', '1.0.0');
 define('VENNQUIZ_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('VENNQUIZ_PLUGIN_URL', plugin_url(__FILE__));
+define('VENNQUIZ_PLUGIN_URL', plugins_url('', __FILE__));
 define('VENNQUIZ_STYLES_PATH', 'includes/css');
 define('VENNQUIZ_SCRIPTS_PATH', 'includes/js');
 define('VENNQUIZ_PARTIALS_PATH', VENNQUIZ_PLUGIN_DIR . 'includes/partials');
