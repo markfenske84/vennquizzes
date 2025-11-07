@@ -1,6 +1,6 @@
 # VennQuizzes Plugin - Complete Documentation
 
-Version 1.0.0
+Version 1.1.0
 
 ---
 
@@ -38,6 +38,14 @@ VennQuizzes is a WordPress plugin that helps you create interactive quizzes with
 - Educational quizzes to show subject strengths
 - Marketing tools to guide customers to products
 - Personality assessments with visual results
+
+**What's New in v1.1.0:**
+- 🎨 Completely redesigned modern UI
+- 📱 Better mobile responsiveness
+- 🎯 Block theme support (alignwide, alignfull)
+- ✨ Smooth animations and transitions
+- ♿ Improved accessibility features
+- 🖨️ Print-friendly quiz results
 
 **Example Use Case:**  
 A marketing consultant creates a quiz asking clients about their business goals, current strategies, and challenges. Based on their answers, the quiz shows whether they should focus on Search Marketing, Social Media, or Direct Sales, visualized in an interactive Venn diagram.
@@ -141,13 +149,15 @@ You have two options for displaying your quiz:
    - Add a "Shortcode" block
    - Paste your shortcode into the block
 
-**Option 2: Using the Gutenberg Block**
+**Option 2: Using the Gutenberg Block (Recommended)**
 
 1. Edit your page in the Block Editor
 2. Click the + icon to add a block
 3. Search for "Venn Quiz"
 4. Select the block
-5. Use the dropdown menu in the block to select your quiz
+5. In the block settings panel on the right, choose your quiz from the dropdown
+6. You'll see a beautiful preview showing which quiz is selected
+7. You can also use alignment options (normal, wide, or full width) for block themes
 
 ---
 
@@ -236,7 +246,7 @@ A: The Venn diagram will show overlap, and the success message for the first tie
 A: Not in the current version. This is a feature planned for future releases.
 
 **Q: Is the quiz mobile-friendly?**  
-A: Yes! The quiz and Venn diagram work on all devices.
+A: Yes! The quiz and Venn diagram are fully responsive and optimized for all devices, including tablets and smartphones. The UI automatically adapts to different screen sizes.
 
 **Q: How do I update the plugin?**  
 A: The plugin will automatically check for updates from GitHub. When an update is available, you'll see a notification in your WordPress admin under **Plugins**. Just click "Update Now".
@@ -253,22 +263,29 @@ VennQuizzes is a modern WordPress plugin built with:
 - Native WordPress Custom Post Types (no external dependencies)
 - Custom meta boxes for quiz configuration
 - REST API enabled for Gutenberg integration
+- Block API v2 for enhanced Gutenberg support
 
 **Frontend:**
 - D3.js v4 for Venn diagram rendering
 - Venn.js library for diagram calculations
 - Vanilla JavaScript (no jQuery dependency)
-- Responsive CSS
+- Modern, style-agnostic CSS with animations
+- Responsive design with mobile-first approach
+- Custom-styled form elements
+- Backdrop blur effects for modern browsers
 
 **Updates:**
 - Plugin Update Checker library for GitHub-based automatic updates
 
 **Key Features:**
 - No database schema modifications (uses post meta)
-- Gutenberg block support
+- Enhanced Gutenberg block with preview states
+- Block theme support (alignwide, alignfull)
 - Shortcode support
 - Vanilla JS admin interface (jQuery-free)
 - Modular file structure
+- Style-agnostic design
+- Accessibility-focused with WCAG compliance
 
 ---
 
@@ -354,9 +371,11 @@ vennquizzes/
 - Renders admin interface HTML
 
 **includes/block-editor.php**
-- Registers Gutenberg block
-- Provides block rendering callback
-- Handles block attributes
+- Registers Gutenberg block with Block API v2
+- Enqueues block editor styles
+- Provides enhanced block rendering callback
+- Handles block attributes (quizId, align)
+- Supports block theme alignment options
 
 **includes/partials/quiz-form.php**
 - Frontend quiz form HTML generation
@@ -576,6 +595,8 @@ document.addEventListener('click', function(e) {
 
 ### Styling and Customization
 
+**New in v1.1.0:** The plugin now features a modern, style-agnostic design that automatically adapts to any WordPress theme. The UI includes custom-styled form elements, smooth animations, and a beautiful results overlay.
+
 **Customizing Quiz Appearance:**
 
 The plugin provides CSS classes you can override in your theme:
@@ -583,27 +604,38 @@ The plugin provides CSS classes you can override in your theme:
 **Frontend Classes:**
 
 ```css
+/* Main Containers */
 .venn-quiz-form { }                    /* Quiz container */
-.quiz-question-wrapper { }             /* Question wrapper */
-.quiz-question { }                     /* Question input */
-.get-results { }                       /* Submit button */
-.results-overlay { }                   /* Results overlay */
-.success-messages { }                  /* Success message */
+.venn-quiz-block-wrapper { }           /* Block wrapper (NEW) */
+.quiz-question-wrapper { }             /* Question wrapper with shadow */
+
+/* Form Elements */
+.quiz-question { }                     /* Question input (custom styled) */
+.quiz-question-wrapper input[type="radio"] { }    /* Custom radio buttons */
+.quiz-question-wrapper input[type="checkbox"] { } /* Custom checkboxes */
+.quiz-question-wrapper input[type="range"] { }    /* Custom range sliders */
+.quiz-question-wrapper select { }      /* Custom select dropdowns */
+
+/* Buttons */
+.get-results { }                       /* Submit button (gradient style) */
+
+/* Results */
+.results-overlay { }                   /* Results overlay with backdrop blur */
+.success-messages { }                  /* Success message with gradient bg */
 .venn-diag { }                         /* Venn diagram container */
 ```
 
 **Example Custom Styling:**
 
+Note: The plugin already includes modern styling, but you can customize it further:
+
 ```css
-/* Make the submit button larger and blue */
+/* Override the submit button gradient */
 .get-results {
-    background-color: #0073aa;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem 3rem;
+    font-size: 1.25rem;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
 }
 
 /* Customize the Venn diagram size */
@@ -720,6 +752,8 @@ The Plugin Update Checker will automatically notify users of the new version.
 - Minify JavaScript and CSS
 - Cache quiz data for better performance
 - Optimize admin interface for quizzes with many questions
+- Reduce CSS specificity for faster rendering
+- Use CSS transforms for better animation performance
 
 ---
 
@@ -740,6 +774,13 @@ Block name: `vennquizzes/venn-quiz`
 
 Attributes:
 - `quizId` (number): The post ID of the quiz to display
+- `align` (string): Alignment option (empty, 'wide', or 'full')
+
+Supports:
+- `align`: ['wide', 'full']
+- `html`: false
+
+API Version: 2
 
 **PHP Functions:**
 
@@ -789,7 +830,15 @@ venn_quiz_shortcode($atts)
 **Getting Help:**
 
 - GitHub Issues: https://github.com/markfenske84/vennquizzes/issues
+- GitHub Discussions: https://github.com/markfenske84/vennquizzes/discussions
 - Email: support@webfor.com
+
+**Before Requesting Support:**
+
+1. Check that you're running the latest version (currently 1.1.0)
+2. Try deactivating other plugins to check for conflicts
+3. Test with a default WordPress theme
+4. Check browser console for JavaScript errors
 
 **Commercial Support:**
 
@@ -825,7 +874,38 @@ You should have received a copy of the GNU General Public License along with thi
 
 ---
 
-**Document Version:** 1.0.0  
-**Last Updated:** November 6, 2025  
-**Compatible with:** WordPress 5.0+ and VennQuizzes 1.0.0
+## Version History
+
+### v1.1.0 (November 7, 2025)
+- Major UI overhaul with modern, style-agnostic design
+- Enhanced Gutenberg block editor with beautiful previews and loading states
+- Improved admin interface with better visual hierarchy
+- Block theme support with alignwide and alignfull options
+- Custom-styled form elements (radio buttons, checkboxes, range sliders)
+- Smooth animations and transitions throughout
+- Better mobile responsiveness with mobile-first approach
+- Improved accessibility with proper focus states and WCAG compliance
+- Print-friendly styles for quiz results
+- Enhanced results overlay with backdrop blur effect
+- New block editor CSS file
+- Updated Block API to version 2
+- Better error handling and user feedback
+
+### v1.0.0 (November 6, 2025)
+- Initial release
+- Custom post type for quizzes
+- Three question types (radio, checkbox, range)
+- Venn diagram visualization using D3.js
+- Basic Gutenberg block support
+- Shortcode support
+- Automatic updates from GitHub
+- Admin interface for quiz creation
+- Frontend quiz form rendering
+- Success message system
+
+---
+
+**Document Version:** 1.1.0  
+**Last Updated:** November 7, 2025  
+**Compatible with:** WordPress 5.0+ and VennQuizzes 1.1.0
 
